@@ -6,17 +6,15 @@ import com.hellofresh.challenge.framework.pageobject.AccountCreationPage;
 import com.hellofresh.challenge.framework.pageobject.AuthenticationPage;
 import com.hellofresh.challenge.framework.pageobject.HeaderPage;
 import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
+import com.hellofresh.challenge.framework.pageobject.TabPage;
 import com.hellofresh.challenge.framework.util.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.mikael.urlbuilder.UrlBuilder;
 import io.qameta.allure.Attachment;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.OutputType;
@@ -41,6 +39,7 @@ public class BaseTest {
     protected AuthenticationPage authenticationPage = new AuthenticationPage(driver);
     protected AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
     protected MyAccountPage myAccountPage = new MyAccountPage(driver);
+    protected TabPage tabPage = new TabPage(driver);
 
     @BeforeClass
     public static void setupProject() throws IllegalAccessException, MalformedURLException, InstantiationException {

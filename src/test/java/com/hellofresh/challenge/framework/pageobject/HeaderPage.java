@@ -11,6 +11,8 @@ public class HeaderPage extends PageObject {
     private WebElement signInButton;
     @FindBy(className = "account")
     private WebElement account;
+    @FindBy(linkText = "Women")
+    private WebElement womenButton;
 
     public HeaderPage(WebDriver driver) {
         super(driver);
@@ -23,6 +25,10 @@ public class HeaderPage extends PageObject {
 
     public String getAccountText(){
         return account.getText();
+    }
+
+    public void clickWomanButton(){
+        womenButton.click();
     }
 
 }
