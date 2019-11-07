@@ -64,19 +64,33 @@ public class WebTest extends BaseTest {
 
   @Test
   public void checkoutTest(){
+    //given
     String email = existingUser.getEmail();
     String password = existingUser.getPassword();
+    String expectedHeading = ExpectedTranslations.ORDER_CONFIRMATION_HEADING.translation();
+    String expectedSummaryTitle = ExpectedTranslations.ORDER_CONFIRMATION_SUMMARY_TITLE.translation();
+
+    //when
     navigateToBaseUrl();
     headerPage.goToAuthenticationPage();
     authenticationPage.fillCredentialsToLogin(email, password);
     authenticationPage.clickLoginButton();
     headerPage.clickWomanTab();
-    tabPage.clickShortSleeveTShirts();
+    productPage.clickShortSleeveTShirts();
     productPage.clickAddToCardButton();
     productPage.proceed();
     productPage.secproceed();
     productPage.clickthproceed();
+    productPage.selectAgreementCheckBox();
     productPage.clickFourProceed();
+    productPage.clickPayByBankWireMethod();
+    productPage.clickConfirmationButton();
+
+    //then
+    assertThat(orderConfirmationPage.getHeadingText()).isEqualTo(expectedHeading);
+    assertThat(orderConfirmationPage.isFourStepCompleted()).isTrue();
+    assertThat(orderConfirmationPage.isTheCurrentStepTheLast()).isTrue();
+    assertThat(orderConfirmationPage.getSummaryTitle()).isEqualTo(expectedSummaryTitle);
   }
 
 }

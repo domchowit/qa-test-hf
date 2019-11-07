@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductPage extends PageObject{
+public class ProductPage extends PageObject {
 
   @FindBy(name = "Submit")
   private WebElement addToCardButton;
@@ -16,40 +16,62 @@ public class ProductPage extends PageObject{
 
   @FindBy(xpath = "//*[@id=\"center_column\"]/form/p/button/span")
   private WebElement thproceed;
-  @FindBy(name = "//*[@id=\"form\"]/p/button/span")
+  @FindBy(name = "processCarrier")
   private WebElement fourProceed;
+  @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img")
+  private WebElement shortSleeveTShirts;
+
+  @FindBy(name = "cgv")
+  private WebElement agreementCheckBox;
+
+  @FindBy(className = "bankwire")
+  private WebElement payBankWireButton;
+
+  @FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
+  private WebElement confirmOrderButton;
+
 
   public ProductPage(WebDriver driver) {
     super(driver);
     PageFactory.initElements(driver, this);
   }
 
-  public void clickAddToCardButton(){
+  public void clickShortSleeveTShirts() {
+    shortSleeveTShirts.click();
+  }
+
+  public void clickAddToCardButton() {
     addToCardButton.click();
   }
 
-  public void proceed(){
+  public void proceed() {
     firstProceed.click();
   }
 
-  public void secproceed(){
+  public void secproceed() {
     secproceed.click();
   }
 
-  public void clickthproceed(){
+  public void clickthproceed() {
     thproceed.click();
   }
 
-  public void clickFourProceed(){
+  public void selectAgreementCheckBox() {
+    agreementCheckBox.click();
+  }
+
+  public void clickFourProceed() {
     fourProceed.click();
   }
 
-  //    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='layer_cart']//a[@class and @title='Proceed to checkout']"))).click();
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'cart_navigation')]/a[@title='Proceed to checkout']"))).click();
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("processAddress"))).click();
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("uniform-cgv"))).click();
-//    driver.findElement(By.name("processCarrier")).click();
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("bankwire"))).click();
+  public void clickPayByBankWireMethod() {
+    payBankWireButton.click();
+  }
+
+  public void clickConfirmationButton() {
+    confirmOrderButton.click();
+
+  }
 
 
 }

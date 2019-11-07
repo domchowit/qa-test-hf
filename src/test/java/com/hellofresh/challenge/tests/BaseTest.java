@@ -39,8 +39,8 @@ public class BaseTest {
     protected AuthenticationPage authenticationPage = new AuthenticationPage(driver);
     protected AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
     protected MyAccountPage myAccountPage = new MyAccountPage(driver);
-    protected TabPage tabPage = new TabPage(driver);
     protected ProductPage productPage = new ProductPage(driver);
+    protected OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
 
 
     @BeforeClass
