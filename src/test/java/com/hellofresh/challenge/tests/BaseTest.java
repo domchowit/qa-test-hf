@@ -2,11 +2,7 @@ package com.hellofresh.challenge.tests;
 
 import com.hellofresh.challenge.framework.configuration.ConfigFeeder;
 import com.hellofresh.challenge.framework.model.User;
-import com.hellofresh.challenge.framework.pageobject.AccountCreationPage;
-import com.hellofresh.challenge.framework.pageobject.AuthenticationPage;
-import com.hellofresh.challenge.framework.pageobject.HeaderPage;
-import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
-import com.hellofresh.challenge.framework.pageobject.TabPage;
+import com.hellofresh.challenge.framework.pageobject.*;
 import com.hellofresh.challenge.framework.util.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.mikael.urlbuilder.UrlBuilder;
@@ -40,6 +36,8 @@ public class BaseTest {
     protected AccountCreationPage accountCreationPage = new AccountCreationPage(driver);
     protected MyAccountPage myAccountPage = new MyAccountPage(driver);
     protected TabPage tabPage = new TabPage(driver);
+    protected ProductPage productPage = new ProductPage(driver);
+
 
     @BeforeClass
     public static void setupProject() throws IllegalAccessException, MalformedURLException, InstantiationException {

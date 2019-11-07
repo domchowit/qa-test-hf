@@ -27,7 +27,7 @@ public class HeaderPage extends PageObject {
         return account.getText();
     }
 
-    public void clickWomanButton(){
+    public void clickWomanTab(){
         womenButton.click();
     }
 
