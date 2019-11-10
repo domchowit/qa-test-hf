@@ -23,6 +23,7 @@ public class DriverSessionProvider {
 
   private static final Logger logger = LogManager.getLogger(DriverSessionProvider.class);
   WebDriver driver;
+
   @Rule
   public TestWatcher screenshotOnFailure = new TestWatcher() {
     @Override

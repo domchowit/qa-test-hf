@@ -6,8 +6,11 @@ import com.hellofresh.challenge.framework.pageobject.HeaderPage;
 import com.hellofresh.challenge.framework.util.TestHelper;
 import io.mikael.urlbuilder.UrlBuilder;
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
@@ -16,6 +19,10 @@ public class BaseTest {
   protected static User existingUser;
   private static String baseUrl = ConfigFeeder.INSTANCE.config.getString("maven.srv.url");
   private static ArrayList<WebDriver> activeSessions = new ArrayList();
+  protected final Logger logger = LogManager.getLogger(BaseTest.class);
+
+  @Rule
+  public ScreenShotRule screenShotRule = new ScreenShotRule();
 
   @BeforeClass
   public static void setupProject() {
@@ -40,6 +47,7 @@ public class BaseTest {
     DriverSessionProvider session = new DriverSessionProvider();
     WebDriver driver = session.getDriver();
     activeSessions.add(driver);
+    screenShotRule.setDriver(driver);
     String url = UrlBuilder.fromString(baseUrl)
         .toString();
     driver.get(url);
