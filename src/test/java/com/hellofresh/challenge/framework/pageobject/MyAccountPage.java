@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MyAccountPage extends PageObject{
+public class MyAccountPage extends PageObject {
 
   @FindBy(css = "h1")
   private WebElement heading;
@@ -21,17 +21,17 @@ public class MyAccountPage extends PageObject{
   }
 
   @Step
-  public String getHeaderText(){
+  public String getHeaderText() {
     return heading.getText();
   }
 
   @Step
-  public String getInfoAccountText(){
+  public String getInfoAccountText() {
     return infoAccount.getText();
   }
 
   @Step
-  public boolean isLoguoutDisplayed(){
+  public boolean isLoguoutDisplayed() {
     return logout.isDisplayed();
   }
 }

@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 public class WebTest extends BaseTest {
+
   protected final Logger logger = LogManager.getLogger(WebTest.class);
 
 

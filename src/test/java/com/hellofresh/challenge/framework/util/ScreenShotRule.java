@@ -14,13 +14,13 @@ public class ScreenShotRule extends TestWatcher {
   private final Logger logger = LogManager.getLogger(ScreenShotRule.class);
   private WebDriver driver;
 
-  public void setDriver(WebDriver driver){
+  public void setDriver(WebDriver driver) {
     this.driver = driver;
   }
 
   @Override
   protected void failed(Throwable e, Description description) {
-    logger.info("Make screen shot in {}()",description.getMethodName());
+    logger.info("Make screen shot in {}()", description.getMethodName());
     makeScreenshotOnFailure();
   }
 
