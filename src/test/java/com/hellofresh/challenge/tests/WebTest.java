@@ -7,14 +7,17 @@ import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
 import com.hellofresh.challenge.framework.pageobject.OrderConfirmationPage;
 import com.hellofresh.challenge.framework.util.ExpectedResultGenerator;
 import com.hellofresh.challenge.framework.util.ExpectedTranslations;
-import org.apache.log4j.LogManager;
+import io.qameta.allure.Description;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 public class WebTest extends BaseTest {
-  protected static final org.apache.log4j.Logger logger = LogManager.getLogger(WebTest.class.getName());
+  protected final Logger logger = LogManager.getLogger(WebTest.class);
 
 
   @Test
+  @Description("asdadasasd")
   public void signInTest() {
     //given
     String expectedUserHeader = ExpectedResultGenerator.getHeaderMyAcountText(randomUser);
@@ -35,9 +38,9 @@ public class WebTest extends BaseTest {
     String myAccountHeader = headerPage.getAccountText();
     String infoAccountText = myAccountPage.getInfoAccountText();
 
-    logger.info("headerText " + headerText);
-    logger.info("myAccountHeader " + myAccountHeader);
-    logger.info("infoAccountText " + infoAccountText);
+    logger.debug("headerText " + headerText);
+    logger.debug("myAccountHeader " + myAccountHeader);
+    logger.debug("infoAccountText " + infoAccountText);
 
     assertThat(headerText).isEqualTo(expectedMyAccountHeader);
     assertThat(myAccountHeader).isEqualTo(expectedUserHeader);

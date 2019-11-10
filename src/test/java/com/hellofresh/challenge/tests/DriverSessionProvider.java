@@ -6,7 +6,8 @@ import io.qameta.allure.Attachment;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Rule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
@@ -20,8 +21,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverSessionProvider {
 
-  protected static final org.apache.log4j.Logger logger = LogManager.getLogger(BaseTest.class.getName());
-  protected WebDriver driver;
+  private static final Logger logger = LogManager.getLogger(DriverSessionProvider.class);
+  WebDriver driver;
   @Rule
   public TestWatcher screenshotOnFailure = new TestWatcher() {
     @Override
@@ -84,7 +85,6 @@ public class DriverSessionProvider {
   }
 
   private void setUpSession() {
-    logger.info("setUpSession");
     try {
       setupProfile();
     } catch (InstantiationException e) {
@@ -94,6 +94,7 @@ public class DriverSessionProvider {
     } catch (MalformedURLException e) {
       e.printStackTrace();
     }
+    logger.info("Executing test with {}", driver.getClass().getName());
   }
 
 }
