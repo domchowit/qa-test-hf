@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.hellofresh.challenge.framework.pageobject.HeaderPage;
 import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
 import com.hellofresh.challenge.framework.pageobject.OrderConfirmationPage;
+import com.hellofresh.challenge.framework.util.BaseTest;
 import com.hellofresh.challenge.framework.util.ExpectedResultGenerator;
 import com.hellofresh.challenge.framework.util.ExpectedTranslations;
 import io.qameta.allure.Description;
@@ -17,7 +18,7 @@ public class WebTest extends BaseTest {
 
 
   @Test
-  @Description("asdadasasd")
+  @Description("Sign In Test - new user creation")
   public void signInTest() {
     //given
     String expectedUserHeader = ExpectedResultGenerator.getHeaderMyAcountText(randomUser);
@@ -50,6 +51,7 @@ public class WebTest extends BaseTest {
   }
 
   @Test
+  @Description("Log In Test - existing user check")
   public void logInTest() {
     //given
     String email = existingUser.getEmail();
@@ -80,6 +82,7 @@ public class WebTest extends BaseTest {
   }
 
   @Test
+  @Description("Check Out Test - perform order action")
   public void checkoutTest() {
     //given
     String email = existingUser.getEmail();
@@ -94,8 +97,16 @@ public class WebTest extends BaseTest {
         .fillCredentialsToLogin(email, password)
         .clickLoginButton();
 
-    OrderConfirmationPage orderConfirmationPage = headerPage.clickWomanTab().clickShortSleeveTShirts().clickAddToCardButton()
-        .proceed().secproceed().clickthproceed().selectAgreementCheckBox().clickFourProceed().clickPayByBankWireMethod()
+    OrderConfirmationPage orderConfirmationPage = headerPage
+        .clickWomanTab()
+        .clickShortSleeveTShirts()
+        .clickAddToCardButton()
+        .proceedToCheckout()
+        .summaryProceed()
+        .addressProceed()
+        .selectAgreementCheckBox()
+        .shippingProceed()
+        .clickPayByBankWireMethod()
         .clickConfirmationButton();
 
     assertThat(orderConfirmationPage.getHeadingText()).isEqualTo(expectedHeading);

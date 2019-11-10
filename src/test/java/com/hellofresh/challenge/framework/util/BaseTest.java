@@ -1,9 +1,8 @@
-package com.hellofresh.challenge.tests;
+package com.hellofresh.challenge.framework.util;
 
 import com.hellofresh.challenge.framework.configuration.ConfigFeeder;
 import com.hellofresh.challenge.framework.model.User;
 import com.hellofresh.challenge.framework.pageobject.HeaderPage;
-import com.hellofresh.challenge.framework.util.TestHelper;
 import io.mikael.urlbuilder.UrlBuilder;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;

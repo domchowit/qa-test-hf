@@ -1,4 +1,4 @@
-package com.hellofresh.challenge.tests;
+package com.hellofresh.challenge.framework.util;
 
 import com.hellofresh.challenge.framework.configuration.ConfigFeeder;
 import io.github.bonigarcia.wdm.WebDriverManager;

@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -13,6 +14,7 @@ public class PageObject {
     PageFactory.initElements(driver, this);
   }
 
+  @Step
   public String getUrl() {
     return this.driver.getCurrentUrl();
   }

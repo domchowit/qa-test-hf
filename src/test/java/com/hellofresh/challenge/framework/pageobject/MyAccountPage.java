@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,14 +20,17 @@ public class MyAccountPage extends PageObject{
     PageFactory.initElements(driver, this);
   }
 
+  @Step
   public String getHeaderText(){
     return heading.getText();
   }
 
+  @Step
   public String getInfoAccountText(){
     return infoAccount.getText();
   }
 
+  @Step
   public boolean isLoguoutDisplayed(){
     return logout.isDisplayed();
   }

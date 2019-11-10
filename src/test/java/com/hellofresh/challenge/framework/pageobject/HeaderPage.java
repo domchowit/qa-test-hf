@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,10 +25,12 @@ public class HeaderPage extends PageObject {
         return new AuthenticationPage(driver);
     }
 
+    @Step
     public String getAccountText(){
         return account.getText();
     }
 
+    @Step
     public ProductPage clickWomanTab(){
         womenButton.click();
         return new ProductPage(driver);

@@ -1,4 +1,4 @@
-package com.hellofresh.challenge.tests;
+package com.hellofresh.challenge.framework.util;
 
 import io.qameta.allure.Attachment;
 import org.apache.logging.log4j.LogManager;

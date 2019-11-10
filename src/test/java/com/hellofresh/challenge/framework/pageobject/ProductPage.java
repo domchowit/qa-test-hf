@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,46 +37,55 @@ public class ProductPage extends PageObject {
     PageFactory.initElements(driver, this);
   }
 
+  @Step
   public ProductPage clickShortSleeveTShirts() {
     shortSleeveTShirts.click();
     return this;
   }
 
+  @Step
   public ProductPage clickAddToCardButton() {
     addToCardButton.click();
     return this;
   }
 
-  public ProductPage proceed() {
+  @Step
+  public ProductPage proceedToCheckout() {
     firstProceed.click();
     return this;
   }
 
-  public ProductPage secproceed() {
+  @Step
+  public ProductPage summaryProceed() {
     secproceed.click();
     return this;
   }
 
-  public ProductPage clickthproceed() {
+  @Step
+  public ProductPage addressProceed() {
     thproceed.click();
     return this;
   }
 
+  @Step
   public ProductPage selectAgreementCheckBox() {
     agreementCheckBox.click();
     return this;
   }
 
-  public ProductPage clickFourProceed() {
+  @Step
+  public ProductPage shippingProceed() {
     fourProceed.click();
     return this;
   }
 
+  @Step
   public ProductPage clickPayByBankWireMethod() {
     payBankWireButton.click();
     return this;
   }
 
+  @Step
   public OrderConfirmationPage clickConfirmationButton() {
     confirmOrderButton.click();
     return new OrderConfirmationPage(driver);

@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,18 +25,22 @@ public class OrderConfirmationPage extends PageObject {
     PageFactory.initElements(driver, this);
   }
 
+  @Step
   public String getHeadingText() {
     return header.getText();
   }
 
+  @Step
   public boolean isFourStepCompleted() {
     return fourStep.isDisplayed();
   }
 
+  @Step
   public boolean isTheCurrentStepTheLast() {
     return fifthStep.isDisplayed();
   }
 
+  @Step
   public String getSummaryTitle() {
     return summaryTitle.getText();
   }

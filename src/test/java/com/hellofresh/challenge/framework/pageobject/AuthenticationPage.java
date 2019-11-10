@@ -1,5 +1,6 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import io.qameta.allure.Step;
 import net.bytebuddy.asm.Advice.This;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,32 +25,38 @@ public class AuthenticationPage extends PageObject{
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public AuthenticationPage fillEmailToCreateAnAccount(String email){
         emailCreateForm.sendKeys(email);
         return this;
     }
 
+    @Step
     public AccountCreationPage clickCreateAnAccount(){
         submitCreateButton.click();
         return new AccountCreationPage(driver);
     }
 
+    @Step
     public AuthenticationPage fillCredentialsToLogin(String email, String password){
         fillEmail(email);
         fillPassword(password);
         return this;
     }
 
+    @Step
     public MyAccountPage clickLoginButton(){
         submitLoginButton.click();
         return new MyAccountPage(driver);
     }
 
+    @Step
     private AuthenticationPage fillEmail(String email){
         emailLoginForm.sendKeys(email);
         return this;
     }
 
+    @Step
     private AuthenticationPage fillPassword(String password){
         passwordLoginForm.sendKeys(password);
         return this;

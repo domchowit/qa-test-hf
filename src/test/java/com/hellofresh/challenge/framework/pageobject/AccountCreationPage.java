@@ -1,6 +1,8 @@
 package com.hellofresh.challenge.framework.pageobject;
 
 import com.hellofresh.challenge.framework.model.User;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,6 +53,7 @@ public class AccountCreationPage extends PageObject {
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public AccountCreationPage fillUserData(User user){
         fillUserName(user.getName());
         fillUserSurname(user.getSurname());
@@ -71,91 +74,107 @@ public class AccountCreationPage extends PageObject {
         return this;
     }
 
+    @Step
     public MyAccountPage clickSubmitButton(){
         submitButton.click();
         return new MyAccountPage(driver);
     }
 
-
+    @Step
     private AccountCreationPage fillUserName(String name){
         customerFirstnameForm.sendKeys(name);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillUserSurname(String surname){
         customerLastnameForm.sendKeys(surname);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillPassword(String password){
         passwordForm.sendKeys(password);
         return this;
     }
 
+    @Step
     private AccountCreationPage selectDayOfBirth(Integer day){
         Select select = new Select(daysDropDown);
         select.selectByValue(day.toString());
         return this;
     }
 
+    @Step
     private AccountCreationPage selectMonthOfBirth(Integer month){
         Select select = new Select(monthsDropDown);
         select.selectByValue(month.toString());
         return this;
     }
 
+    @Step
     private AccountCreationPage selectYearOfBirth(Integer year){
         Select select = new Select(yearsDropDown);
         select.selectByValue(year.toString());
         return this;
     }
 
+    @Step
     private AccountCreationPage fillCompany(String company){
         companyForm.sendKeys(company);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillAddress1(String address){
         address1Form.sendKeys(address);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillAddress2(String address){
         address2Form.sendKeys(address);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillCity(String city){
         cityForm.sendKeys(city);
         return this;
     }
 
+    @Step
     private AccountCreationPage selectState(String state){
         Select select = new Select(stateDropDown);
         select.selectByVisibleText(state);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillPostcode(Integer postcode){
         postcodeForm.sendKeys(postcode.toString());
         return this;
     }
 
+    @Step
     private AccountCreationPage fillOther(String other){
         otherForm.sendKeys(other);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillPhone(String phone){
         phoneForm.sendKeys(phone);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillPhoneMobile(String mobile){
         phoneMobileForm.sendKeys(mobile);
         return this;
     }
 
+    @Step
     private AccountCreationPage fillAlias(String alias){
         aliasForm.sendKeys(alias);
         return this;
