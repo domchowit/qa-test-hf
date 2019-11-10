@@ -19,16 +19,18 @@ public class HeaderPage extends PageObject {
         PageFactory.initElements(driver, this);
     }
 
-    public void goToAuthenticationPage(){
+    public AuthenticationPage goToAuthenticationPage(){
         this.signInButton.click();
+        return new AuthenticationPage(driver);
     }
 
     public String getAccountText(){
         return account.getText();
     }
 
-    public void clickWomanTab(){
+    public ProductPage clickWomanTab(){
         womenButton.click();
+        return new ProductPage(driver);
     }
 
 }

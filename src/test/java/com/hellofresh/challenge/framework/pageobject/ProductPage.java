@@ -36,42 +36,49 @@ public class ProductPage extends PageObject {
     PageFactory.initElements(driver, this);
   }
 
-  public void clickShortSleeveTShirts() {
+  public ProductPage clickShortSleeveTShirts() {
     shortSleeveTShirts.click();
+    return this;
   }
 
-  public void clickAddToCardButton() {
+  public ProductPage clickAddToCardButton() {
     addToCardButton.click();
+    return this;
   }
 
-  public void proceed() {
+  public ProductPage proceed() {
     firstProceed.click();
+    return this;
   }
 
-  public void secproceed() {
+  public ProductPage secproceed() {
     secproceed.click();
+    return this;
   }
 
-  public void clickthproceed() {
+  public ProductPage clickthproceed() {
     thproceed.click();
+    return this;
   }
 
-  public void selectAgreementCheckBox() {
+  public ProductPage selectAgreementCheckBox() {
     agreementCheckBox.click();
+    return this;
   }
 
-  public void clickFourProceed() {
+  public ProductPage clickFourProceed() {
     fourProceed.click();
+    return this;
   }
 
-  public void clickPayByBankWireMethod() {
+  public ProductPage clickPayByBankWireMethod() {
     payBankWireButton.click();
+    return this;
   }
 
-  public void clickConfirmationButton() {
+  public OrderConfirmationPage clickConfirmationButton() {
     confirmOrderButton.click();
-
+    return new OrderConfirmationPage(driver);
   }
-
 
 }

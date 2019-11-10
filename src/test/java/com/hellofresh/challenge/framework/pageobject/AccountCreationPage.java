@@ -51,7 +51,7 @@ public class AccountCreationPage extends PageObject {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillUserData(User user){
+    public AccountCreationPage fillUserData(User user){
         fillUserName(user.getName());
         fillUserSurname(user.getSurname());
         fillPassword(user.getPassword());
@@ -68,79 +68,97 @@ public class AccountCreationPage extends PageObject {
         fillPhone(user.getPhone());
         fillPhoneMobile(user.getPhoneMobile());
         fillAlias(user.getAddressAlias());
+        return this;
     }
 
-    public void clickSubmitButton(){
+    public MyAccountPage clickSubmitButton(){
         submitButton.click();
+        return new MyAccountPage(driver);
     }
 
 
-    private void fillUserName(String name){
+    private AccountCreationPage fillUserName(String name){
         customerFirstnameForm.sendKeys(name);
+        return this;
     }
 
-    private void fillUserSurname(String surname){
+    private AccountCreationPage fillUserSurname(String surname){
         customerLastnameForm.sendKeys(surname);
+        return this;
     }
 
-    private void fillPassword(String password){
+    private AccountCreationPage fillPassword(String password){
         passwordForm.sendKeys(password);
+        return this;
     }
 
-    private void selectDayOfBirth(Integer day){
+    private AccountCreationPage selectDayOfBirth(Integer day){
         Select select = new Select(daysDropDown);
         select.selectByValue(day.toString());
+        return this;
     }
 
-    private void selectMonthOfBirth(Integer month){
+    private AccountCreationPage selectMonthOfBirth(Integer month){
         Select select = new Select(monthsDropDown);
         select.selectByValue(month.toString());
+        return this;
     }
 
-    private void selectYearOfBirth(Integer year){
+    private AccountCreationPage selectYearOfBirth(Integer year){
         Select select = new Select(yearsDropDown);
         select.selectByValue(year.toString());
+        return this;
     }
 
-    private void fillCompany(String company){
+    private AccountCreationPage fillCompany(String company){
         companyForm.sendKeys(company);
+        return this;
     }
 
-    private void fillAddress1(String address){
+    private AccountCreationPage fillAddress1(String address){
         address1Form.sendKeys(address);
+        return this;
     }
 
-    private void fillAddress2(String address){
+    private AccountCreationPage fillAddress2(String address){
         address2Form.sendKeys(address);
+        return this;
     }
 
-    private void fillCity(String city){
+    private AccountCreationPage fillCity(String city){
         cityForm.sendKeys(city);
+        return this;
     }
 
-    private void selectState(String state){
+    private AccountCreationPage selectState(String state){
         Select select = new Select(stateDropDown);
         select.selectByVisibleText(state);
+        return this;
     }
 
-    private void fillPostcode(Integer postcode){
+    private AccountCreationPage fillPostcode(Integer postcode){
         postcodeForm.sendKeys(postcode.toString());
+        return this;
     }
 
-    private void fillOther(String other){
+    private AccountCreationPage fillOther(String other){
         otherForm.sendKeys(other);
+        return this;
     }
 
-    private void fillPhone(String phone){
+    private AccountCreationPage fillPhone(String phone){
         phoneForm.sendKeys(phone);
+        return this;
     }
 
-    private void fillPhoneMobile(String mobile){
+    private AccountCreationPage fillPhoneMobile(String mobile){
         phoneMobileForm.sendKeys(mobile);
+        return this;
     }
 
-    private void fillAlias(String alias){
+    private AccountCreationPage fillAlias(String alias){
         aliasForm.sendKeys(alias);
+        return this;
     }
 
 }
