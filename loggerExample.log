@@ -1,6 +1,0 @@
-Nov 07, 2019 4:06:54 PM com.hellofresh.challenge.tests.LoggerTest main
-INFO: message 1
-Nov 07, 2019 4:06:54 PM com.hellofresh.challenge.tests.LoggerTest main
-SEVERE: message 2
-Nov 07, 2019 4:06:54 PM com.hellofresh.challenge.tests.LoggerTest2 thing
-WARNING: something to log
