@@ -5,7 +5,6 @@ import com.hellofresh.challenge.framework.model.Order;
 import com.hellofresh.challenge.framework.model.User;
 import com.hellofresh.challenge.framework.model.enums.Color;
 import com.hellofresh.challenge.framework.model.enums.Size;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -23,12 +22,12 @@ public class TestHelper {
         .surname(getRandomString(10))
         .email(generateRandomEmail())
         .password(getRandomString(10, true, true))
-        .dateOfBirth(createRandomDate(1900, 2000))
+        .dateOfBirth(generateRandomDate(1900, 2000))
         .company(getRandomString(10))
         .address(getRandomString(10))
         .city(getRandomString(10))
         .state("Colorado")
-        .postCode(createRandomIntBetween(10000, 99999))
+        .postCode(generateRandomIntBetween(10000, 99999))
         .phone(getRandomString(10, false, true))
         .phoneMobile(getRandomString(10, false, true))
         .other(getRandomString(10))
@@ -45,14 +44,14 @@ public class TestHelper {
   }
 
 
-  public static LocalDate createRandomDate(int startYear, int endYear) {
-    int day = createRandomIntBetween(1, 28);
-    int month = createRandomIntBetween(1, 12);
-    int year = createRandomIntBetween(startYear, endYear);
+  public static LocalDate generateRandomDate(int startYear, int endYear) {
+    int day = generateRandomIntBetween(1, 28);
+    int month = generateRandomIntBetween(1, 12);
+    int year = generateRandomIntBetween(startYear, endYear);
     return LocalDate.of(year, month, day);
   }
 
-  public static int createRandomIntBetween(int start, int end) {
+  public static int generateRandomIntBetween(int start, int end) {
     return start + (int) Math.round(Math.random() * (end - start));
   }
 
@@ -61,12 +60,16 @@ public class TestHelper {
     return "hf_challenge_" + timestamp + "@hf" + timestamp.substring(7) + ".com";
   }
 
-  static public String getRandomString(int length, boolean useLetters, boolean useNumbers) {
+  public static String getRandomString(int length, boolean useLetters, boolean useNumbers) {
     return RandomStringUtils.random(length, useLetters, useNumbers);
   }
 
-  static public String getRandomString(int length) {
+  public static String getRandomString(int length) {
     return RandomStringUtils.random(length, true, false);
+  }
+
+  public static String getHeaderMyAccountText(User user) {
+    return user.getName() + " " + user.getSurname();
   }
 
 }

@@ -9,8 +9,6 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <parallel>methods</parallel>
-    <threadCount>3</threadCount>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.11</junit.version>
     <selenium.version>3.11.0</selenium.version>
@@ -162,6 +160,9 @@
 
   <profiles>
     <profile>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <id>parallel</id>
       <build>
         <plugins>
@@ -184,15 +185,12 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
-              <parallel>${parallel}</parallel>
-              <threadCount>${threadCount}</threadCount>
+              <parallel>methods</parallel>
+              <threadCount>3</threadCount>
             </configuration>
           </plugin>
         </plugins>
       </build>
-      <!--      <activation>-->
-      <!--        <activeByDefault>true</activeByDefault>-->
-      <!--      </activation>-->
       <properties>
         <env>default</env>
       </properties>

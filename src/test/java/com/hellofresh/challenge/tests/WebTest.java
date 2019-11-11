@@ -7,8 +7,8 @@ import com.hellofresh.challenge.framework.pageobject.HeaderPage;
 import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
 import com.hellofresh.challenge.framework.pageobject.OrderConfirmationPage;
 import com.hellofresh.challenge.framework.util.BaseTest;
-import com.hellofresh.challenge.framework.util.ExpectedResultGenerator;
 import com.hellofresh.challenge.framework.util.ExpectedTranslations;
+import com.hellofresh.challenge.framework.util.TestHelper;
 import io.qameta.allure.Description;
 import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +24,7 @@ public class WebTest extends BaseTest {
   @Description("Sign In Test - new user creation")
   public void signInTest() {
     //given
-    String expectedUserHeader = ExpectedResultGenerator.getHeaderMyAcountText(randomUser);
+    String expectedUserHeader = TestHelper.getHeaderMyAccountText(randomUser);
     String expectedMyAccountHeader = ExpectedTranslations.MY_ACCOUNT_HEADER.translation();
     String expectedInfoAccount = ExpectedTranslations.MY_ACCOUNT_WELCOME.translation();
     String expectedPartOfUrl = ExpectedTranslations.MY_ACCOUNT_URL.translation();
@@ -60,7 +60,7 @@ public class WebTest extends BaseTest {
     String email = existingUser.getEmail();
     String password = existingUser.getPassword();
     String expectedMyAccountHeader = ExpectedTranslations.MY_ACCOUNT_HEADER.translation();
-    String expectedUserHeader = ExpectedResultGenerator.getHeaderMyAcountText(existingUser);
+    String expectedUserHeader = TestHelper.getHeaderMyAccountText(existingUser);
     String expectedInfoAccount = ExpectedTranslations.MY_ACCOUNT_WELCOME.translation();
     String expectedPartOfUrl = ExpectedTranslations.MY_ACCOUNT_URL.translation();
 

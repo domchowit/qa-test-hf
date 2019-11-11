@@ -3,13 +3,11 @@ package com.hellofresh.challenge.framework.pageobject;
 import com.hellofresh.challenge.framework.model.enums.Color;
 import com.hellofresh.challenge.framework.model.enums.Size;
 import io.qameta.allure.Step;
-import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -21,26 +19,20 @@ public class ProductPage extends PageObject {
   private WebElement firstProceed;
   @FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]")
   private WebElement secproceed;
-
   @FindBy(xpath = "//*[@id=\"center_column\"]/form/p/button/span")
-  private WebElement thproceed;
+  private WebElement addressProceed;
   @FindBy(name = "processCarrier")
-  private WebElement fourProceed;
+  private WebElement shippingProceed;
   @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img")
   private WebElement shortSleeveTShirts;
-
   @FindBy(name = "cgv")
   private WebElement agreementCheckBox;
-
   @FindBy(className = "bankwire")
   private WebElement payBankWireButton;
-
   @FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
   private WebElement confirmOrderButton;
-
   @FindBy(id = "group_1")
   private WebElement sizeDropDown;
-
   @FindAll({
       @FindBy(id = "color_13"),
       @FindBy(id = "color_14")
@@ -67,7 +59,7 @@ public class ProductPage extends PageObject {
 
   @Step
   public ProductPage proceedToCheckout() {
-    firstProceed.click();
+    waitUntilElementIsClickableAndClick(firstProceed);
     return this;
   }
 
@@ -79,7 +71,7 @@ public class ProductPage extends PageObject {
 
   @Step
   public ProductPage addressProceed() {
-    thproceed.click();
+    waitUntilElementIsClickableAndClick(addressProceed);
     return this;
   }
 
@@ -91,7 +83,7 @@ public class ProductPage extends PageObject {
 
   @Step
   public ProductPage shippingProceed() {
-    fourProceed.click();
+    shippingProceed.click();
     return this;
   }
 
@@ -116,7 +108,7 @@ public class ProductPage extends PageObject {
 
   @Step
   public ProductPage selectColor(Color color) {
-    WebElement selection = colors.stream().filter(c->c.getAttribute("name").equals(color.color())).findFirst().get();
+    WebElement selection = colors.stream().filter(c -> c.getAttribute("name").equals(color.color())).findFirst().get();
     selection.click();
     return this;
   }

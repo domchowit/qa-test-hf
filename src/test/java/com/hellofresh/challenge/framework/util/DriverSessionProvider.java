@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverSessionProvider {
@@ -55,26 +56,37 @@ public class DriverSessionProvider {
 
   private void setupProfile() throws InstantiationException, IllegalAccessException, MalformedURLException {
     String profile = System.getProperty("driver", "chrome");
-    switch (profile) {
-      case "remote":
-        ChromeOptions capabilities = new ChromeOptions();
-        driver = new RemoteWebDriver(getGridURL(), capabilities);
-        break;
-      case "chrome":
-        Class<? extends WebDriver> driverClass = ChromeDriver.class;
-        WebDriverManager.getInstance(driverClass).setup();
-        driver = driverClass.newInstance();
-        break;
-      case "firefox":
-        driverClass = FirefoxDriver.class;
-        WebDriverManager.getInstance(driverClass).setup();
-        driver = driverClass.newInstance();
-        break;
-      default:
-        driverClass = ChromeDriver.class;
-        WebDriverManager.getInstance(driverClass).setup();
-        driver = driverClass.newInstance();
-        break;
+    Boolean remote = Boolean.parseBoolean(System.getProperty("remote", "false"));
+    if(remote){
+      switch (profile) {
+        case "chrome":
+          ChromeOptions chromeOptions = new ChromeOptions();
+          driver = new RemoteWebDriver(getGridURL(), chromeOptions);
+          break;
+        case "firefox":
+          FirefoxOptions firefoxOptions = new FirefoxOptions();
+          driver = new RemoteWebDriver(getGridURL(), firefoxOptions);
+          break;
+      }
+    }
+    else{
+      switch (profile) {
+        case "chrome":
+          Class<? extends WebDriver> driverClass = ChromeDriver.class;
+          WebDriverManager.getInstance(driverClass).setup();
+          driver = driverClass.newInstance();
+          break;
+        case "firefox":
+          driverClass = FirefoxDriver.class;
+          WebDriverManager.getInstance(driverClass).setup();
+          driver = driverClass.newInstance();
+          break;
+        default:
+          driverClass = ChromeDriver.class;
+          WebDriverManager.getInstance(driverClass).setup();
+          driver = driverClass.newInstance();
+          break;
+      }
     }
     setupTimeouts();
   }
