@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  zalenium:
+    image: dosel/zalenium
+    hostname: zalenium
+    privileged: true
+    ports:
+      - "4444:4444"
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/videos:/home/seluser/videos
+    environment:
+      - PULL_SELENIUM_IMAGE=true
+      - ZALENIUM_PROXY_CLEANUP_TIMEOUT=1800
+    command: >
+      start
+        --desiredContainers 3
+        --maxDockerSeleniumContainers 5
+        --debugEnabled true
