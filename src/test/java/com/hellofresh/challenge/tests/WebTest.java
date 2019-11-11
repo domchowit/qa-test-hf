@@ -2,6 +2,7 @@ package com.hellofresh.challenge.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.hellofresh.challenge.framework.model.Order;
 import com.hellofresh.challenge.framework.pageobject.HeaderPage;
 import com.hellofresh.challenge.framework.pageobject.MyAccountPage;
 import com.hellofresh.challenge.framework.pageobject.OrderConfirmationPage;
@@ -9,6 +10,7 @@ import com.hellofresh.challenge.framework.util.BaseTest;
 import com.hellofresh.challenge.framework.util.ExpectedResultGenerator;
 import com.hellofresh.challenge.framework.util.ExpectedTranslations;
 import io.qameta.allure.Description;
+import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -84,12 +86,14 @@ public class WebTest extends BaseTest {
 
   @Test
   @Description("Check Out Test - perform order action")
-  public void checkoutTest() {
+  public void checkoutTest() throws IOException {
     //given
     String email = existingUser.getEmail();
     String password = existingUser.getPassword();
     String expectedHeading = ExpectedTranslations.ORDER_CONFIRMATION_HEADING.translation();
     String expectedSummaryTitle = ExpectedTranslations.ORDER_CONFIRMATION_SUMMARY_TITLE.translation();
+    Order predefinedOrder = fileDataFeeder.getModelInstance("order", Order.class);
+
 
     //when
     HeaderPage headerPage = navigateToBaseUrl();
@@ -101,6 +105,8 @@ public class WebTest extends BaseTest {
     OrderConfirmationPage orderConfirmationPage = headerPage
         .clickWomanTab()
         .clickShortSleeveTShirts()
+        .selectSize(predefinedOrder.getSize())
+        .selectColor(predefinedOrder.getColor())
         .clickAddToCardButton()
         .proceedToCheckout()
         .summaryProceed()

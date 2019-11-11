@@ -1,7 +1,11 @@
 package com.hellofresh.challenge.framework.util;
 
 import com.hellofresh.challenge.framework.configuration.ConfigFeeder;
+import com.hellofresh.challenge.framework.model.Order;
 import com.hellofresh.challenge.framework.model.User;
+import com.hellofresh.challenge.framework.model.enums.Color;
+import com.hellofresh.challenge.framework.model.enums.Size;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -30,6 +34,10 @@ public class TestHelper {
         .other(getRandomString(10))
         .addressAlias(getRandomString(10))
         .build();
+  }
+
+  public static Order generateRandomOrder(){
+    return Order.builder().color(Color.randomColor()).size(Size.randomSize()).build();
   }
 
   public static User generateExistingUser() {

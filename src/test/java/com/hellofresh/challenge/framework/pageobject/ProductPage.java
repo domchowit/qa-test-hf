@@ -1,10 +1,17 @@
 package com.hellofresh.challenge.framework.pageobject;
 
+import com.hellofresh.challenge.framework.model.enums.Color;
+import com.hellofresh.challenge.framework.model.enums.Size;
 import io.qameta.allure.Step;
+import java.util.ArrayList;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProductPage extends PageObject {
 
@@ -30,6 +37,15 @@ public class ProductPage extends PageObject {
 
   @FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
   private WebElement confirmOrderButton;
+
+  @FindBy(id = "group_1")
+  private WebElement sizeDropDown;
+
+  @FindAll({
+      @FindBy(id = "color_13"),
+      @FindBy(id = "color_14")
+  })
+  private List<WebElement> colors;
 
 
   public ProductPage(WebDriver driver) {
@@ -89,6 +105,20 @@ public class ProductPage extends PageObject {
   public OrderConfirmationPage clickConfirmationButton() {
     confirmOrderButton.click();
     return new OrderConfirmationPage(driver);
+  }
+
+  @Step
+  public ProductPage selectSize(Size size) {
+    Select select = new Select(sizeDropDown);
+    select.selectByVisibleText(size.size());
+    return this;
+  }
+
+  @Step
+  public ProductPage selectColor(Color color) {
+    WebElement selection = colors.stream().filter(c->c.getAttribute("name").equals(color.color())).findFirst().get();
+    selection.click();
+    return this;
   }
 
 }
